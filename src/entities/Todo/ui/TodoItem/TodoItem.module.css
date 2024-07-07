@@ -1,0 +1,18 @@
+.todoItem {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.completedButton {
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid grey;
+    cursor: pointer;
+}
+
+.completedText {
+    text-decoration: line-through;
+}
