@@ -1,12 +1,14 @@
 import { TodoList } from "../../../widgets";
 
+import classes from "./Main.module.css";
+
 const Main = () => {
     return (
         <>
             <header>
-                <h1>TODOS</h1>
+                <h1 className={classes.title}>Todos</h1>
             </header>
-            <main>
+            <main className={classes.main}>
                 <TodoList />
             </main>
         </>

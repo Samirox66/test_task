@@ -7,19 +7,11 @@ export const TodosContextProvider = ({ children }: PropsWithChildren) => {
     const [filter, setFilter] = useState<Filter>("All");
     const [maxTodoId, setMaxTodoId] = useState(0);
 
-    let filteredTodos = todos;
-
-    if (filter == "Active") {
-        filteredTodos = filteredTodos.filter((todo) => !todo.completed);
-    } else if (filter == "Completed") {
-        filteredTodos = filteredTodos.filter((todo) => todo.completed);
-    }
-
     return (
         <TodosContext.Provider
             value={{
                 maxTodoId: maxTodoId,
-                todos: filteredTodos,
+                todos: todos,
                 addTodo: (todo) => {
                     setTodos((prev) => [
                         ...prev,

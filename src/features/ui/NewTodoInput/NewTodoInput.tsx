@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useTodosContext } from "../../../shared/contexts";
 
+import classes from "./NewTodoInput.module.css";
+
 export const NewTodoInput = () => {
     const [newTodo, setNewTodo] = useState("");
     const { addTodo } = useTodosContext();
@@ -20,9 +22,11 @@ export const NewTodoInput = () => {
 
     return (
         <input
+            className={classes.input}
             value={newTodo}
             onInput={handleOnInput}
             onKeyDown={handleOnKeyDown}
+            placeholder="What needs to be done?"
         />
     );
 };

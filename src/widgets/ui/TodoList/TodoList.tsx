@@ -5,11 +5,19 @@ import { useTodosContext } from "../../../shared/contexts";
 import classes from "./TodoList.module.css";
 
 const TodoList = () => {
-    const { todos, changeIsTodoCompleted, clearCompleted } = useTodosContext();
+    const { todos, changeIsTodoCompleted, clearCompleted, filter } =
+        useTodosContext();
 
     const itemsLeft = todos.filter((todo) => !todo.completed).length;
 
-    const mappedTodos = todos.map((todo) => (
+    let filteredTodos = todos;
+    if (filter == "Active") {
+        filteredTodos = filteredTodos.filter((todo) => !todo.completed);
+    } else if (filter == "Completed") {
+        filteredTodos = filteredTodos.filter((todo) => todo.completed);
+    }
+
+    const mappedTodos = filteredTodos.map((todo) => (
         <TodoItem
             key={todo.id}
             todo={todo}
@@ -17,13 +25,18 @@ const TodoList = () => {
         />
     ));
     return (
-        <section>
+        <section className={classes.todoList}>
             <NewTodoInput />
-            {mappedTodos}
+            <div className={classes.todos}>{mappedTodos}</div>
             <div className={classes.todoFilters}>
                 <p>{itemsLeft} items left</p>
                 <TodoFilters />
-                <button onClick={clearCompleted}>Clear completed</button>
+                <button
+                    className={classes.clearButton}
+                    onClick={clearCompleted}
+                >
+                    Clear completed
+                </button>
             </div>
         </section>
     );
