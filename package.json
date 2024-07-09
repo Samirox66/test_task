@@ -5,7 +5,7 @@
     "type": "module",
     "scripts": {
         "start": "vite",
-        "build": "tsc -b && vite build",
+        "build": "tsc -b && vite build --base=/test_task",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "test": "jest",
         "preview": "vite preview",
