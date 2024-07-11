@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { TodoItem } from "./TodoItem";
 
 describe("TodoItem", () => {
@@ -11,5 +11,16 @@ describe("TodoItem", () => {
         );
 
         expect(screen.getByRole("img")).toBeInTheDocument();
+    });
+    test("test if click on button works", () => {
+        let testVariable = 3;
+        render(
+            <TodoItem
+                todo={{ completed: false, value: "Test todo", id: 1 }}
+                onClick={() => (testVariable = 1)}
+            />
+        );
+        fireEvent.click(screen.getByRole("button"));
+        expect(testVariable).toBe(1);
     });
 });

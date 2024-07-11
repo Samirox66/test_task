@@ -27,11 +27,14 @@ const TodoList = () => {
     return (
         <section className={classes.todoList}>
             <NewTodoInput />
-            <div className={classes.todos}>{mappedTodos}</div>
+            <div data-testid="todos" className={classes.todos}>
+                {mappedTodos}
+            </div>
             <div className={classes.todoFilters}>
                 <p>{itemsLeft} items left</p>
                 <TodoFilters />
                 <button
+                    data-testId="clear-button"
                     className={classes.clearButton}
                     onClick={clearCompleted}
                 >

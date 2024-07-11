@@ -9,6 +9,7 @@ export const TodoFilters = () => {
     const filterTypes: Filter[] = ["All", "Active", "Completed"];
     const filters = filterTypes.map((f, index) => (
         <label
+            data-testId={`filter${f}`}
             key={index}
             onClick={() => setFilter(f)}
             className={classNames(classes.filter, {

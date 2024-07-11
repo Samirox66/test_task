@@ -12,7 +12,11 @@ interface TodoItemProps {
 export const TodoItem = ({ todo, onClick }: TodoItemProps) => {
     return (
         <div className={classes.todoItem}>
-            <button className={classes.completedButton} onClick={onClick}>
+            <button
+                data-testId={`complete-button-${todo.id}`}
+                className={classes.completedButton}
+                onClick={onClick}
+            >
                 {todo.completed && <img src={checkmark} />}
             </button>
             <p
